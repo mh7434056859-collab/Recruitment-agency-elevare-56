@@ -1,10 +1,16 @@
-import { Router, type IRouter } from "express";
-import healthRouter from "./health";
-import emailRouter from "./email";
+import express from "express";
+import cors from "cors";
+import router from "./app";
 
-const router: IRouter = Router();
+const app = express();
 
-router.use(healthRouter);
-router.use(emailRouter);
+app.use(cors());
+app.use(express.json());
 
-export default router;
+app.use("/", router);
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
