@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api", routes);
 
-const publicDir = path.resolve(__dirname, "..", "public");
+const publicDir = path.resolve(__dirname, "..");
 app.use(express.static(publicDir));
 
 app.get("/{*path}", (_req, res) => {
